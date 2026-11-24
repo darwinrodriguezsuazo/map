@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Territorio, Literatura y Edición en el Biobío · En actualización</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <title>Territorio, Literatura y Edición en el Biobío · Darwin Rodríguez Suazo</title>
   <style>
     :root {
-      --bg-paper: #f9f8f4;
+      --bg-white: #ffffff;
       --ink-primary: #1a1a1a;
-      --ink-secondary: #52524e;
-      --border-subtle: #dcdad1;
-      --accent: #7a2e22; /* Rojo óxido editorial */
+      --ink-secondary: #595959;
+      --ink-muted: #767676;
+      --border-light: #e5e5e5;
     }
 
     * {
@@ -23,169 +20,246 @@
     }
 
     body {
-      background-color: var(--bg-paper);
+      background-color: var(--bg-white);
       color: var(--ink-primary);
-      font-family: 'Newsreader', Georgia, serif;
+      font-family: "Calibri Light", Calibri, "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 300;
       line-height: 1.65;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 2.5rem 1.5rem;
+      padding: 3rem 1.5rem 2.5rem;
     }
 
-    .container {
-      max-width: 680px;
+    .wrapper {
+      max-width: 920px;
       margin: auto;
       width: 100%;
     }
 
-    .meta-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
+    header.site-header {
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 1.25rem;
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .meta-tag::before {
-      content: "";
+    .author-brand {
+      font-size: 1.15rem;
+      color: var(--ink-primary);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .author-brand span {
+      color: var(--ink-muted);
+      margin-left: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .top-nav a {
+      color: var(--ink-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .top-nav a:hover {
+      color: var(--ink-primary);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.85fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .status-label {
       display: inline-block;
-      width: 7px;
-      height: 7px;
-      background-color: var(--accent);
-      border-radius: 50%;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      margin-bottom: 1rem;
     }
 
     h1 {
-      font-size: clamp(1.85rem, 4vw, 2.5rem);
-      font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: -0.015em;
+      font-size: clamp(1.9rem, 3.5vw, 2.45rem);
+      font-weight: 300;
+      line-height: 1.22;
+      color: var(--ink-primary);
       margin-bottom: 1.5rem;
     }
 
     .lead {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       color: var(--ink-primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .description {
       font-size: 1.05rem;
       color: var(--ink-secondary);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.25rem;
     }
 
-    .spec-grid {
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 1.25rem 0;
-      margin-bottom: 2.5rem;
+    .meta-list {
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.25rem;
+      margin-bottom: 2.25rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 1.5rem;
       font-size: 0.95rem;
     }
 
-    .spec-item span {
+    .meta-item strong {
       display: block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-weight: 400;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--ink-secondary);
-      margin-bottom: 0.25rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.15rem;
     }
 
-    nav.links {
+    .action-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      align-items: center;
+      gap: 1.75rem;
     }
 
-    nav.links a {
+    .action-links a {
       color: var(--ink-primary);
       text-decoration: none;
       border-bottom: 1px solid var(--ink-primary);
       padding-bottom: 2px;
       font-size: 1rem;
-      transition: color 0.2s ease, border-color 0.2s ease;
+      transition: opacity 0.2s ease;
     }
 
-    nav.links a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
+    .action-links a:hover {
+      opacity: 0.65;
     }
 
-    nav.links a.secondary-link {
-      color: var(--ink-secondary);
-      border-bottom-color: var(--border-subtle);
-      font-size: 0.92rem;
+    figure.archive-piece {
+      margin: 0;
+      border: 1px solid var(--border-light);
+      padding: 0.85rem;
+      background-color: #fafafa;
     }
 
-    nav.links a.secondary-link:hover {
-      color: var(--ink-primary);
-      border-bottom-color: var(--ink-primary);
+    figure.archive-piece img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: contrast(0.97);
+    }
+
+    figure.archive-piece figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      color: var(--ink-muted);
     }
 
     footer {
-      max-width: 680px;
-      margin: 3rem auto 0;
+      max-width: 920px;
+      margin: 4rem auto 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-light);
       width: 100%;
-      font-size: 0.85rem;
-      color: var(--ink-secondary);
+      font-size: 0.88rem;
+      color: var(--ink-muted);
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
+
+    @media (max-width: 760px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      figure.archive-piece {
+        max-width: 380px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <main class="container">
-    <div class="meta-tag">Archivo cartográfico · En revisión metodológica</div>
+  <div class="wrapper">
+    <header class="site-header">
+      <a href="https://darwinrodriguezsuazo.github.io/" class="author-brand">
+        Darwin Rodríguez Suazo <span>· Editor e investigador literario</span>
+      </a>
+      <nav class="top-nav">
+        <a href="https://darwinrodriguezsuazo.github.io/">Sitio profesional</a>
+        <a href="https://transa.hypotheses.org/">Transa · Blog/Archivo ↗</a>
+      </nav>
+    </header>
 
-    <h1>Territorio, Literatura y Edición en la Región del Biobío</h1>
+    <main class="content-grid">
+      <section>
+        <span class="status-label">Archivo cartográfico · En actualización</span>
+        <h1>Territorio, Literatura y Edición en la Región del Biobío</h1>
 
-    <p class="lead">
-      Este dispositivo de visualización reúne y geolocaliza editoriales independientes, revistas literarias, imprentas y espacios de circulación del libro en el Biobío.
-    </p>
+        <p class="lead">
+          Dispositivo de visualización y consulta sobre editoriales independientes, revistas literarias, imprentas y espacios de circulación del libro en el Biobío.
+        </p>
 
-    <p class="description">
-      Actualmente el proyecto se encuentra en proceso de actualización técnica y curatorial para integrar nuevas variables sociológicas, filtros temporales y vínculos directos con el archivo documental de <em>Transa</em>.
-    </p>
+        <p class="description">
+          El mapa se encuentra actualmente en proceso de reelaboración técnica y metodológica para incorporar nuevas variables sociológicas, cortes temporales y vínculos directos con el archivo documental de <em>Transa</em>.
+        </p>
 
-    <div class="spec-grid">
-      <div class="spec-item">
-        <span>Cobertura</span>
-        Región del Biobío, Chile
-      </div>
-      <div class="spec-item">
-        <span>Estado</span>
-        Reestructuración de base de datos (v2.0)
-      </div>
-      <div class="spec-item">
-        <span>Investigación y edición</span>
-        Darwin Rodríguez Suazo
-      </div>
-    </div>
+        <div class="meta-list">
+          <div class="meta-item">
+            <strong>Cobertura geográfica</strong>
+            Región del Biobío, Chile
+          </div>
+          <div class="meta-item">
+            <strong>Estado del proyecto</strong>
+            Reestructuración de base de datos (v2.0)
+          </div>
+        </div>
 
-    <nav class="links">
-      <a href="https://darwinrodriguezsuazo.github.io/">← Volver al sitio profesional</a>
-      <a href="https://transa.hypotheses.org/">Ir a Transa · Blog de archivo ↗</a>
-    </nav>
-  </main>
+        <div class="action-links">
+          <a href="https://darwinrodriguezsuazo.github.io/">← Volver al sitio profesional</a>
+          <a href="https://transa.hypotheses.org/">Explorar el archivo en Transa ↗</a>
+        </div>
+      </section>
+
+      <aside>
+        <figure class="archive-piece">
+          <img 
+            src="https://darwinrodriguezsuazo.github.io/img/cartel-tome.jpg" 
+            alt="Cartel Jornadas Tomecinas de Enero, Círculo de Bellas Artes de Tomé" 
+          />
+          <figcaption>
+            Jornadas Tomecinas de Enero · Círculo de Bellas Artes de Tomé (diseño de S. Espinoza, 1986–1987). Archivo del proyecto.
+          </figcaption>
+        </figure>
+      </aside>
+    </main>
+  </div>
 
   <footer>
-    <span>Darwin Rodríguez Suazo · Sociología y Estudios Editoriales</span>
-    <span>Concepción / Barcelona</span>
+    <span>Darwin Rodríguez Suazo · Chile</span>
+    <span>rsdsoc@gmail.com</span>
   </footer>
 
 </body>
